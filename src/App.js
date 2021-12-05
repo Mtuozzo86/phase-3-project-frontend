@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Barber from "./Barber";
 import ReviewList from "./ReviewList";
@@ -6,17 +6,18 @@ import ReviewList from "./ReviewList";
 import "./App.css";
 
 function App() {
-  // useEffect(() => {
-  //   fetch("http://localhost:9292/")
-  //     .then((resp) => resp.json())
-  //     .then((data) => console.log(data));
-  // }, []);
+  const [customers, setCustomers] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:9292/")
+      .then((resp) => resp.json())
+      .then((names) => setCustomers(names));
+  }, []);
 
   return (
     <div>
       <NavBar />
-      <Barber />
-      <ReviewList />
+      {/* <Barber /> */}
+      <ReviewList people={customers} />
     </div>
   );
 }
