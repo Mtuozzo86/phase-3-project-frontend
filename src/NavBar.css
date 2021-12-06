@@ -1,0 +1,9 @@
+.navbar {
+  padding-left: 10px;
+  padding-bottom: 2px;
+  color: rgb(255, 255, 255);
+  background-color: #322a26;
+  font-size: large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
