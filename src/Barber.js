@@ -1,4 +1,6 @@
+import "./Barber.css";
+
 function Barber() {
-  return <div>Box</div>;
+  return <div className="box">Box</div>;
 }
 export default Barber;

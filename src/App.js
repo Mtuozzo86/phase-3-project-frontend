@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import NavBar from "./NavBar";
+import Barber from "./Barber";
+
 import "./App.css";
 
 function App() {
@@ -9,7 +11,12 @@ function App() {
       .then((data) => console.log(data));
   }, []);
 
-  return <NavBar />;
+  return (
+    <div>
+      <NavBar />
+      <Barber />
+    </div>
+  );
 }
 
 export default App;
