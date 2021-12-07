@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar";
-import Barber from "./Barber";
-import ReviewList from "./ReviewList";
 
 import "./App.css";
-
+import InputReviews from "./InputReviews";
 function App() {
   const [customers, setCustomers] = useState([]);
   useEffect(() => {
@@ -15,9 +12,7 @@ function App() {
 
   return (
     <div>
-      <NavBar />
-      {/* <Barber /> */}
-      <ReviewList people={customers} />
+      <InputReviews />
     </div>
   );
 }

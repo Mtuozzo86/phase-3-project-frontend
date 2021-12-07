@@ -1,5 +1,10 @@
 * {
-  background-color: #d3d0cb;
   padding: 0;
   margin: 0;
+}
+
+html {
+  height: 100vh;
+  background: #ebcfcf;
+  background-size: 100vh;
 }
