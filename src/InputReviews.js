@@ -4,7 +4,7 @@ import { useState } from "react";
 function InputReviews({ onFormSubmit }) {
   const [userName, setUserName] = useState("");
   const [body, setBody] = useState("");
-  const [userData, setUserData] = useState([]);
+  const [barber, setBarber] = useState("");
 
   function handleNameInput(e) {
     setUserName(e.target.value);
@@ -14,10 +14,15 @@ function InputReviews({ onFormSubmit }) {
     setBody(e.target.value);
   }
 
+  function handleFilterChange(e) {
+    setBarber(e.target.value);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
       userName: userName,
+      barber: barber,
       body: body,
     };
     onFormSubmit(formData);
@@ -49,6 +54,16 @@ function InputReviews({ onFormSubmit }) {
             placeholder="Leave a review..."
             onChange={handleReviewBody}
           />
+        </div>
+        <div>
+          <label className="barber-list" for="barbers">
+            Choose your barber:
+          </label>
+          <select id="barbers" name="barbers" onChange={handleFilterChange}>
+            <option></option>
+            <option value="Joe">Joe</option>
+            <option value="Jesse">Jesse</option>
+          </select>
         </div>
         <div>
           <button type="submit">Submit</button>

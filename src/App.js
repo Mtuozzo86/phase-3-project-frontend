@@ -3,24 +3,27 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import InputReviews from "./InputReviews";
 import ReviewBox from "./ReviewBox";
+import ReviewList from "./ReviewList";
 
 function App() {
-  const [customers, setCustomers] = useState([]);
   const [submittedReview, setSubmittedReview] = useState([]);
   useEffect(() => {
     fetch("http://localhost:9292/")
       .then((resp) => resp.json())
-      .then((names) => setCustomers(names));
+      .then((names) => console.log(names));
   }, []);
 
   function handleFormSubmit(userReview) {
-    setSubmittedReview(userReview);
+    const newReview = userReview;
+    const newReviewArray = [...submittedReview, newReview];
+    setSubmittedReview(newReviewArray);
   }
 
   return (
     <div>
       <InputReviews onFormSubmit={handleFormSubmit} />
-      <ReviewBox submitted={submittedReview} />
+      <ReviewList submitted={submittedReview} />
+      {/* <ReviewBox submitted={submittedReview} /> */}
     </div>
   );
 }

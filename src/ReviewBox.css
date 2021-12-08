@@ -1,0 +1,14 @@
+.card {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  box-shadow: 2px 4px 8px 2px rgb(0, 0, 0);
+  width: 30%;
+}
+
+.container {
+  padding-left: 1rem;
+}
+
+h3 {
+  padding: 10px 20px;
+}

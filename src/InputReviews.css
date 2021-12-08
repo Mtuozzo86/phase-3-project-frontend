@@ -9,13 +9,14 @@ textarea {
   resize: none;
 }
 
-#name {
+#name,
+.barber-list {
   margin-top: 1rem;
   margin-left: 1rem;
 }
 
 button {
-  margin-left: 1rem;
+  margin: 1rem;
   padding: 0.5rem;
   background-color: rgb(203, 203, 228);
 }
