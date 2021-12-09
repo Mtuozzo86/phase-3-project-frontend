@@ -1,7 +1,7 @@
 import "./InputReviews.css";
 import { useState } from "react";
 
-function InputReviews({ onFormSubmit }) {
+function InputReviews({ onFormSubmit, customerId }) {
   const [userName, setUserName] = useState("");
   const [body, setBody] = useState("");
   const [barber, setBarber] = useState("");
@@ -21,7 +21,7 @@ function InputReviews({ onFormSubmit }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:9292/new-review", {
+    fetch("http://localhost:9292/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,6 @@ function InputReviews({ onFormSubmit }) {
       body: JSON.stringify({
         userName: userName,
         body: body,
-        barber: barber,
       }),
     });
 
@@ -41,7 +40,6 @@ function InputReviews({ onFormSubmit }) {
     onFormSubmit(formData);
     setUserName("");
     setBody("");
-    console.log(URLSearchParams);
   }
 
   return (
