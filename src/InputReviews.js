@@ -20,6 +20,19 @@ function InputReviews({ onFormSubmit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    fetch("http://localhost:9292/reviews", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        body: body,
+        barber: barber,
+        userName: userName,
+      }),
+    });
+
     const formData = {
       userName: userName,
       barber: barber,
