@@ -21,15 +21,15 @@ function InputReviews({ onFormSubmit }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:9292/reviews", {
+    fetch("http://localhost:9292/new-review", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        userName: userName,
         body: body,
         barber: barber,
-        userName: userName,
       }),
     });
 
@@ -41,6 +41,7 @@ function InputReviews({ onFormSubmit }) {
     onFormSubmit(formData);
     setUserName("");
     setBody("");
+    console.log(URLSearchParams);
   }
 
   return (
