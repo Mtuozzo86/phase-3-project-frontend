@@ -7,6 +7,7 @@
 
 .container {
   padding-left: 1rem;
+  white-space: pre-line;
 }
 
 h3 {
