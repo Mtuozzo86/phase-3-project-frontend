@@ -1,10 +1,11 @@
 import "./InputReviews.css";
 import { useState } from "react";
 
-function InputReviews({ onFormSubmit, customerId }) {
+function InputReviews({ onFormSubmit, employees }) {
   const [userName, setUserName] = useState("");
   const [body, setBody] = useState("");
   const [barber, setBarber] = useState("");
+  // cosnt [filteredBarber, setFilteredBarber] = useState(NULL)
 
   function handleNameInput(e) {
     setUserName(e.target.value);
@@ -29,6 +30,7 @@ function InputReviews({ onFormSubmit, customerId }) {
       body: JSON.stringify({
         userName: userName,
         body: body,
+        employee_id: barber,
       }),
     });
 

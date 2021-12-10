@@ -7,10 +7,12 @@ import ReviewList from "./ReviewList";
 
 function App() {
   const [submittedReview, setSubmittedReview] = useState([]);
+  const [employees, setEmployees] = useState([]);
+
   useEffect(() => {
-    fetch("http://localhost:9292/")
+    fetch("http://localhost:9292/employees")
       .then((resp) => resp.json())
-      .then((names) => console.log(names));
+      .then((names) => setEmployees(names));
   }, []);
 
   function handleFormSubmit(userReview) {
@@ -21,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <InputReviews onFormSubmit={handleFormSubmit} />
+      <InputReviews onFormSubmit={handleFormSubmit} employees={employees} />
       <ReviewList submitted={submittedReview} />
       {/* <ReviewBox submitted={submittedReview} /> */}
     </div>
