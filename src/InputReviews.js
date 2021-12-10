@@ -4,12 +4,12 @@ import { useState } from "react";
 function InputReviews({ onFormSubmit, employees }) {
   const [userName, setUserName] = useState("");
   const [body, setBody] = useState("");
-  const [barber, setBarber] = useState("");
+  const [barber, setBarber] = useState("1");
 
   const renderOptions = employees.map((employee) => {
     return <option value={`${employee.id}`}>{employee.name}</option>;
   });
-
+  console.log(barber);
   function handleNameInput(e) {
     setUserName(e.target.value);
   }
@@ -31,7 +31,7 @@ function InputReviews({ onFormSubmit, employees }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userName: userName,
+        customer_id: userName,
         body: body,
         employee_id: barber,
       }),
@@ -78,11 +78,6 @@ function InputReviews({ onFormSubmit, employees }) {
           </label>
           <select id="barbers" name="barbers" onChange={handleFilterChange}>
             {renderOptions}
-            {/* <option value="2">Joe</option>
-            <option value="1">Jesse</option>
-            <option value="1">Jesse</option>
-            <option value="1">Jesse</option>
-            <option value="1">Jesse</option> */}
           </select>
         </div>
         <div>
