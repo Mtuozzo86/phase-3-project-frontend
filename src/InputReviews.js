@@ -5,7 +5,10 @@ function InputReviews({ onFormSubmit, employees }) {
   const [userName, setUserName] = useState("");
   const [body, setBody] = useState("");
   const [barber, setBarber] = useState("");
-  // cosnt [filteredBarber, setFilteredBarber] = useState(NULL)
+
+  const renderOptions = employees.map((employee) => {
+    return <option value={`${employee.id}`}>{employee.name}</option>;
+  });
 
   function handleNameInput(e) {
     setUserName(e.target.value);
@@ -74,9 +77,12 @@ function InputReviews({ onFormSubmit, employees }) {
             Choose your barber:
           </label>
           <select id="barbers" name="barbers" onChange={handleFilterChange}>
-            <option></option>
-            <option value="Joe">Joe</option>
-            <option value="Jesse">Jesse</option>
+            {renderOptions}
+            {/* <option value="2">Joe</option>
+            <option value="1">Jesse</option>
+            <option value="1">Jesse</option>
+            <option value="1">Jesse</option>
+            <option value="1">Jesse</option> */}
           </select>
         </div>
         <div>

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-
 import "./App.css";
 import InputReviews from "./InputReviews";
-import ReviewBox from "./ReviewBox";
 import ReviewList from "./ReviewList";
 
 function App() {
@@ -25,7 +23,6 @@ function App() {
     <div>
       <InputReviews onFormSubmit={handleFormSubmit} employees={employees} />
       <ReviewList submitted={submittedReview} />
-      {/* <ReviewBox submitted={submittedReview} /> */}
     </div>
   );
 }
