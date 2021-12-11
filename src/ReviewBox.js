@@ -1,6 +1,10 @@
 import "./ReviewBox.css";
 
-function ReviewBox({ user, barber, review }) {
+function ReviewBox({ user, review, id }) {
+  function handleDelete() {
+    console.log(id);
+  }
+
   return (
     <div className="card">
       <div className="container">
@@ -9,6 +13,7 @@ function ReviewBox({ user, barber, review }) {
         </h3>
         <p>{review} </p>
       </div>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 }

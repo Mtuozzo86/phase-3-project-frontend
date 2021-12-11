@@ -7,9 +7,13 @@ function InputReviews({ onFormSubmit, employees }) {
   const [barber, setBarber] = useState("1");
 
   const renderOptions = employees.map((employee) => {
-    return <option value={`${employee.id}`}>{employee.name}</option>;
+    return (
+      <option key={employee.id} value={`${employee.id}`}>
+        {employee.name}
+      </option>
+    );
   });
-  console.log(barber);
+
   function handleNameInput(e) {
     setUserName(e.target.value);
   }
@@ -25,24 +29,21 @@ function InputReviews({ onFormSubmit, employees }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    const formData = {
+      customer_id: userName,
+      employee_id: barber,
+      body: body,
+    };
     fetch("http://localhost:9292/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        customer_id: userName,
-        body: body,
-        employee_id: barber,
-      }),
-    });
+      body: JSON.stringify(formData),
+    })
+      .then((r) => r.json())
+      .then((data) => onFormSubmit(data));
 
-    const formData = {
-      userName: userName,
-      barber: barber,
-      body: body,
-    };
-    onFormSubmit(formData);
     setUserName("");
     setBody("");
   }
@@ -51,7 +52,7 @@ function InputReviews({ onFormSubmit, employees }) {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label for="name" />
+          <label htmlFor="name" />
           <input
             value={userName}
             type="text"
@@ -62,7 +63,7 @@ function InputReviews({ onFormSubmit, employees }) {
           />
         </div>
         <div>
-          <label for="text-box" />
+          <label htmlFor="text-box" />
           <textarea
             value={body}
             id="text-box"
@@ -73,7 +74,7 @@ function InputReviews({ onFormSubmit, employees }) {
           />
         </div>
         <div>
-          <label className="barber-list" for="barbers">
+          <label className="barber-list" htmlFor="barbers">
             Choose your barber:
           </label>
           <select id="barbers" name="barbers" onChange={handleFilterChange}>
