@@ -1,8 +1,8 @@
 import "./ReviewBox.css";
 
-function ReviewBox({ user, review, id }) {
+function ReviewBox({ user, review, id, onDelete }) {
   function handleDelete() {
-    console.log(id);
+    onDelete(id);
   }
 
   return (

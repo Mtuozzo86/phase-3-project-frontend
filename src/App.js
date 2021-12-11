@@ -19,10 +19,19 @@ function App() {
     setSubmittedReview(newReviewArray);
   }
 
+  function onDelete(deletedReview) {
+    fetch(`http:localhost:9292/${deletedReview}`, {
+      method: "DELETE",
+    });
+    setSubmittedReview(
+      submittedReview.filter((review) => review.id !== deletedReview)
+    );
+  }
+
   return (
     <div>
       <InputReviews onFormSubmit={handleFormSubmit} employees={employees} />
-      <ReviewList submitted={submittedReview} />
+      <ReviewList submitted={submittedReview} onDelete={onDelete} />
     </div>
   );
 }
