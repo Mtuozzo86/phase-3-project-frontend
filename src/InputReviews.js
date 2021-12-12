@@ -28,12 +28,17 @@ function InputReviews({ onFormSubmit, employees }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    // onFormSubmit({
+    //   userName: userName,
+    //   barber: barber,
+    //   body: body,
+    // });
     const formData = {
-      customer_id: userName,
-      employee_id: barber,
+      userName: userName,
+      barber: barber,
       body: body,
     };
+
     fetch("http://localhost:9292/reviews", {
       method: "POST",
       headers: {
@@ -41,11 +46,8 @@ function InputReviews({ onFormSubmit, employees }) {
       },
       body: JSON.stringify(formData),
     })
-      .then((r) => r.json())
-      .then((data) => onFormSubmit(data));
-
-    setUserName("");
-    setBody("");
+      .then((resp) => resp.json())
+      .then(() => onFormSubmit(formData));
   }
 
   return (

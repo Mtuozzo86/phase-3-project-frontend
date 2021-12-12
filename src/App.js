@@ -6,6 +6,7 @@ import ReviewList from "./ReviewList";
 function App() {
   const [submittedReview, setSubmittedReview] = useState([]);
   const [employees, setEmployees] = useState([]);
+  console.log(submittedReview);
 
   useEffect(() => {
     fetch("http://localhost:9292/employees")
