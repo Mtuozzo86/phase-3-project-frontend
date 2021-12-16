@@ -1,7 +1,6 @@
 import ReviewBox from "./ReviewBox";
 
 function ReviewList({ submitted, onDelete }) {
-  console.log(submitted);
   const reviews = submitted.map((elem) => (
     <ReviewBox
       key={elem.id}

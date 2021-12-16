@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import InputReviews from "./InputReviews";
 import ReviewList from "./ReviewList";
+import EditReview from "./EditReview";
 
 function App() {
   const [submittedReview, setSubmittedReview] = useState([]);
   const [employees, setEmployees] = useState([]);
-  console.log(submittedReview);
 
   useEffect(() => {
     fetch("http://localhost:9292/employees")
@@ -21,7 +21,9 @@ function App() {
   }
 
   function onDelete(deletedReview) {
-    fetch(`http:localhost:9292/${deletedReview}`, {
+    console.log(deletedReview);
+
+    fetch(`http://localhost:9292/reviews/${deletedReview}`, {
       method: "DELETE",
     });
     setSubmittedReview(
@@ -33,6 +35,7 @@ function App() {
     <div>
       <InputReviews onFormSubmit={handleFormSubmit} employees={employees} />
       <ReviewList submitted={submittedReview} onDelete={onDelete} />
+      <EditReview />
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import "./ReviewBox.css";
 
 function ReviewBox({ user, review, id, onDelete }) {
-  console.log(user);
+  console.log(id);
   function handleDelete() {
     onDelete(id);
+    console.log(id);
   }
 
   return (

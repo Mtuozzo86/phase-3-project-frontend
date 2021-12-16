@@ -47,7 +47,7 @@ function InputReviews({ onFormSubmit, employees }) {
       body: JSON.stringify(formData),
     })
       .then((resp) => resp.json())
-      .then(() => onFormSubmit(formData));
+      .then((formData) => onFormSubmit(formData));
   }
 
   return (
