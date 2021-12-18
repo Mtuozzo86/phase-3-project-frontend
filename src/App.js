@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import InputReviews from "./InputReviews";
 import ReviewList from "./ReviewList";
-import EditReview from "./EditReview";
 
 function App() {
   const [submittedReview, setSubmittedReview] = useState([]);
@@ -20,9 +19,20 @@ function App() {
     setSubmittedReview(newReviewArray);
   }
 
-  function onDelete(deletedReview) {
-    console.log(deletedReview);
+  function handleUpdateReview(updatedReview) {
+    console.log(updatedReview);
 
+    const updated = submittedReview.map((review) => {
+      if (review.id === updatedReview.id) {
+        return updatedReview;
+      } else {
+        return submittedReview;
+      }
+    });
+    setSubmittedReview(updated);
+  }
+
+  function onDelete(deletedReview) {
     fetch(`http://localhost:9292/reviews/${deletedReview}`, {
       method: "DELETE",
     });
@@ -34,8 +44,11 @@ function App() {
   return (
     <div>
       <InputReviews onFormSubmit={handleFormSubmit} employees={employees} />
-      <ReviewList submitted={submittedReview} onDelete={onDelete} />
-      <EditReview />
+      <ReviewList
+        submitted={submittedReview}
+        onDelete={onDelete}
+        onUpdateReview={handleUpdateReview}
+      />
     </div>
   );
 }

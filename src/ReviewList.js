@@ -1,14 +1,15 @@
 import ReviewBox from "./ReviewBox";
 
-function ReviewList({ submitted, onDelete }) {
+function ReviewList({ submitted, onDelete, onUpdateReview }) {
   const reviews = submitted.map((elem) => (
     <ReviewBox
       key={elem.id}
-      user={elem.userName}
+      user={elem.customer_name}
       review={elem.body}
       barber={elem.barber}
       id={elem.id}
       onDelete={onDelete}
+      onUpdateReview={onUpdateReview}
     />
   ));
 
