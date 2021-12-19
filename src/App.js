@@ -6,6 +6,7 @@ import ReviewList from "./ReviewList";
 function App() {
   const [submittedReview, setSubmittedReview] = useState([]);
   const [employees, setEmployees] = useState([]);
+  console.log(submittedReview);
 
   useEffect(() => {
     fetch("http://localhost:9292/employees")
@@ -20,15 +21,14 @@ function App() {
   }
 
   function handleUpdateReview(updatedReview) {
-    console.log(updatedReview);
-
     const updated = submittedReview.map((review) => {
       if (review.id === updatedReview.id) {
         return updatedReview;
       } else {
-        return submittedReview;
+        return review;
       }
     });
+    console.log(updated);
     setSubmittedReview(updated);
   }
 

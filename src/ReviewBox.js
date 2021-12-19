@@ -6,7 +6,6 @@ import "./ReviewBox.css";
 function ReviewBox({ user, review, id, onDelete, onUpdateReview }) {
   const [editting, setEdit] = useState(false);
 
-  console.log(id, user);
   function handleDelete() {
     onDelete(id);
   }

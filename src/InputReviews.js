@@ -48,6 +48,8 @@ function InputReviews({ onFormSubmit, employees }) {
     })
       .then((resp) => resp.json())
       .then((formData) => onFormSubmit(formData));
+    setBody("");
+    setUserName("");
   }
 
   return (
